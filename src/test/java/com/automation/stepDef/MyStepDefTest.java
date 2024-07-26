@@ -16,7 +16,7 @@ public class MyStepDefTest {
     LoginPage loginPage = new LoginPage();
     HomePage homePage = new HomePage();
 
-    @Given("If the user is on Login Page")
+    @Given("the user is on Login Page")
 
     public void if_the_user_is_on_login_page() {
 
@@ -40,7 +40,7 @@ public class MyStepDefTest {
 
     }
 
-    @Given("If the user is on Home Page")
+    @Given("the user is on Home Page")
 
     public void ifTheUserIsOnHomePage() {
         loginPage.openWebsite();
@@ -61,4 +61,28 @@ public class MyStepDefTest {
     public void userShouldGoToLoginPage() {
         Assert.assertTrue(loginPage.isLoginDisplayed());
     }
+
+    @When("User Clicks on Z-A sort button")
+    public void userClicksOnSortButton() throws InterruptedException {
+        homePage.reverseSort();
+    }
+
+    @Then("list of product should be displayed in descending order")
+    public void listOfProductShouldBeDisplayedInDescendingOrder() {
+        System.out.println(homePage.listEqual());
+    }
+
+    @When("User select High to Low price")
+    public void userSelectHighToLowPrice() {
+        homePage.selectPriceHighToLow();
+        
+    }
+
+    @Then("list of product should be displayed in Price High toLow format")
+    public void listOfProductShouldBeDisplayedInPriceHighToLowFormat() {
+        homePage.checkPriceHighToLow();
+    }
+
+
+
 }
